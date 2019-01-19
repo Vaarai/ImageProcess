@@ -21,6 +21,7 @@ class Pixel {
         int maxColorValue();
         int averageColorValue();
         Color getColor();
+        string getColorString();
         void setColor(int value);
         void setColor(int r, int g, int b);
         void setColor(Color c);
@@ -28,5 +29,10 @@ class Pixel {
         void setColorGreen(int value);
         void setColorBlue(int value);
 };
+
+/* Some work to be done later
+string& operator << (string& s, Pixel p);
+ostream& operator << (std::ostream& os, Pixel p);
+*/
 
 #endif // !PIXEL_H

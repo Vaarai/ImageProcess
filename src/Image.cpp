@@ -53,9 +53,7 @@ void Image::saveImage(string path) {
     for (vector<vector<Pixel*>>::iterator it_vect = this->image_vect.begin(); it_vect != this->image_vect.end(); ++it_vect) {
         for (vector<Pixel*>::iterator it_pix = it_vect->begin(); it_pix != it_vect->end(); ++it_pix) {
             Pixel p = **it_pix;
-            content += to_string(p.getColor().red) + " ";
-            content += to_string(p.getColor().green) + " ";
-            content += to_string(p.getColor().blue) + " ";
+            content += p.getColorString() + " ";
         }
         content += "\n";
     }
