@@ -5,5 +5,8 @@
 *.exe
 *.out
 
-#Utils
+# Utils
 .vscode
+
+# Data
+./*.ppm
