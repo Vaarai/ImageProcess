@@ -21,10 +21,10 @@ class PixelMatrix {
         ~PixelMatrix();
 
         bool setPixel(int h, int w, Pixel *p);
-        Pixel* getPixel(int h, int w);
-        void processPixels(void (*processFunction)(Pixel *));
-        Pixel* averageColor();
-        bool pixIsInImage(int h, int w);
         bool pushPixel(int h, Pixel *p);
+        Pixel* getPixel(int h, int w);
+        bool pixIsInImage(int h, int w);
+        Color averageColor();
+        void processPixels(void (*processFunction)(Pixel *));
 };
 #endif // !PIXELMATRIX_H

@@ -17,7 +17,10 @@ depend:
 clean:
 	rm -f ./*/*.o
 
-mrproper: clean
+rdata:
+	rm -f ./*.ppm
+
+mrproper: clean rdata
 	rm -f $(BIN_NAME)
 
 remake: mrproper $(BIN_NAME)

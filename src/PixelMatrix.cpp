@@ -57,7 +57,7 @@ void PixelMatrix::processPixels(void (*processFunction)(Pixel *)){
     }
 }
 
-Pixel* PixelMatrix::averageColor() {
+Color PixelMatrix::averageColor() {
     double i = 0;
     double red = 0;
     double green = 0;
@@ -71,7 +71,10 @@ Pixel* PixelMatrix::averageColor() {
             blue += p->getColor().blue;
         }
     }
-    Pixel *out_pix = new Pixel((int)(red/i), (int)(green/i), (int)(blue/i));
+    Color out_color;
+    out_color.red = (int)(red/i);
+    out_color.green = (int)(green/i);
+    out_color.blue = (int)(blue/i);
     //cout << out_pix.red << " " << out_pix.green << " " << out_pix.blue;
-    return out_pix;
+    return out_color;
 }
