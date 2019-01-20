@@ -26,6 +26,6 @@ class Image : public PixelMatrix {
         void openImage(string path);
         void saveImage(string path);
 
-        void processPixelsAvg(void (*processFunction)(Pixel*, PixelMatrix*), int ray);
+        void processPixelsAvg(Color (*processFunction)(PixelMatrix), int ray);
 };
 #endif // !IMAGE_H

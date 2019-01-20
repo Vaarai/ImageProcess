@@ -64,11 +64,13 @@ Color PixelMatrix::averageColor() {
     double blue = 0;
     for (vector<vector<Pixel*>>::iterator it_vect = this->image_vect.begin(); it_vect != this->image_vect.end(); ++it_vect) {
         for (vector<Pixel*>::iterator it_pix = it_vect->begin(); it_pix != it_vect->end(); ++it_pix) {
-            i++;
             Pixel *p = *it_pix;
-            red += p->getColor().red;
-            green += p->getColor().green;
-            blue += p->getColor().blue;
+            if(p->getColor().red != -1) {
+                i++;
+                red += p->getColor().red;
+                green += p->getColor().green;
+                blue += p->getColor().blue;
+            }
         }
     }
     Color out_color;
