@@ -1,6 +1,12 @@
 #ifndef PIXEL_H
 #define PIXEL_H
 
+enum ColorE {
+    RED,
+    GREEN,
+    BLUE
+};
+
 struct Color {
     int red;
     int green;
@@ -19,15 +25,14 @@ class Pixel {
 
         Color grayScale(); // return a new pixel in gray scale copy of this
         int maxColorValue();
+        ColorE maxColorType();
         int averageColorValue();
         Color getColor();
         string getColorString();
         void setColor(int value);
+        void setColor(ColorE, int value);
         void setColor(int r, int g, int b);
         void setColor(Color c);
-        void setColorRed(int value);
-        void setColorGreen(int value);
-        void setColorBlue(int value);
 };
 
 /* Some work to be done later

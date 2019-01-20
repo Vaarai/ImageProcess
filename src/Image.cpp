@@ -114,14 +114,14 @@ void Image::convertPpmToImage(string textFile){
             switch (i%3) {
                 case 0: // Start of the Pixel with RED
                     currentPixel = new Pixel();
-                    currentPixel->setColorRed(value);
+                    currentPixel->setColor(RED, value);
                     if(i % ((this->imageSize.width)*3) == 0) h++;
                     break;
                 case 1: // GREEN value
-                    currentPixel->setColorGreen(value);
+                    currentPixel->setColor(GREEN, value);
                     break;
                 case 2: // End of the Pixel with BLUE and push it in the image
-                    currentPixel->setColorBlue(value);
+                    currentPixel->setColor(BLUE, value);
                     if(!this->pushPixel(h, currentPixel)) cout << "Fail to generate Pixels";
                     break;
             }

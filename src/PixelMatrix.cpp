@@ -75,6 +75,5 @@ Color PixelMatrix::averageColor() {
     out_color.red = (int)(red/i);
     out_color.green = (int)(green/i);
     out_color.blue = (int)(blue/i);
-    //cout << out_pix.red << " " << out_pix.green << " " << out_pix.blue;
     return out_color;
 }

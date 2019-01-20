@@ -59,20 +59,23 @@ void Pixel::setColor(int r, int g, int b) {
     this->pixelColor.blue = b;
 }
 
+void Pixel::setColor(ColorE color_type, int value) {
+    switch (color_type)
+    {
+        case RED:
+            this->pixelColor.red = value;
+            break;
+        case GREEN:
+            this->pixelColor.green = value;
+            break;
+        case BLUE:
+            this->pixelColor.blue = value;
+            break;
+    }
+}
+
 void Pixel::setColor(Color c) {
     this->pixelColor = c;
-}
-
-void Pixel::setColorRed(int value) {
-    this->pixelColor.red = value;
-}
-
-void Pixel::setColorGreen(int value) {
-    this->pixelColor.green = value;
-}
-
-void Pixel::setColorBlue(int value) {
-    this->pixelColor.blue = value;
 }
 
 Color Pixel::grayScale() {
@@ -82,9 +85,26 @@ Color Pixel::grayScale() {
     return c;
 }
 
+ColorE Pixel::maxColorType() {
+    const int r = this->pixelColor.red;
+    const int g = this->pixelColor.green;
+    const int b = this->pixelColor.blue;
+
+    int max = (r<g)?g:r;
+    max = ((b)?b:max);
+    
+    if(max == r) return ColorE::RED;
+    else if(max == g) return ColorE::GREEN;
+    else if (max == b) return ColorE::BLUE;
+}
+
 int Pixel::maxColorValue() {
-    int max = (this->pixelColor.red<this->pixelColor.green)?this->pixelColor.green:this->pixelColor.red;
-    return ((max<this->pixelColor.blue)?this->pixelColor.blue:max);
+    const int r = this->pixelColor.red;
+    const int g = this->pixelColor.green;
+    const int b = this->pixelColor.blue;
+
+    int max = (r<g)?g:r;
+    return ((b)?b:max);
 }
 
 int Pixel::averageColorValue() {
