@@ -8,9 +8,9 @@ enum ColorE {
 };
 
 struct Color {
-    int red;
-    int green;
-    int blue;
+    int red=0;
+    int green=0;
+    int blue=0;
 };
 
 class Pixel {
@@ -22,6 +22,8 @@ class Pixel {
         Pixel(int averageValue);
         Pixel(int r, int g, int b);
         ~Pixel();
+
+        static Pixel randomPixel();
 
         Color grayScale(); // return a new pixel in gray scale copy of this
         int maxColorValue();

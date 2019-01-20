@@ -26,6 +26,7 @@ class Image : public PixelMatrix {
         void openImage(string path);
         void saveImage(string path);
 
-        void processPixelsAvg(Color (*processFunction)(PixelMatrix), int ray);
+        PixelMatrix getPixelMatrixAround(int h, int w, int ray);
+        void processPixelsAround(Color (*processFunction)(PixelMatrix), int ray);
 };
 #endif // !IMAGE_H

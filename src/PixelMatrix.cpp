@@ -49,12 +49,14 @@ bool PixelMatrix::pixIsInImage(int h, int w){
 
 
 void PixelMatrix::processPixels(void (*processFunction)(Pixel *)){
+    cout << "Processing pixel... ";
     for (vector<vector<Pixel*>>::iterator it_vect = this->image_vect.begin(); it_vect != this->image_vect.end(); ++it_vect) {
         for (vector<Pixel*>::iterator it_pix = it_vect->begin(); it_pix != it_vect->end(); ++it_pix) {
             Pixel *p = *it_pix;
             (*processFunction)(p);
         }
     }
+    cout << "OK\n";
 }
 
 Color PixelMatrix::averageColor() {

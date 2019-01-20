@@ -131,28 +131,30 @@ void Image::convertPpmToImage(string textFile){
     }
 }
 
-void Image::processPixelsAvg(Color (*processFunction)(PixelMatrix), int ray){
-    cout << "Processing pixels... ";
+PixelMatrix Image::getPixelMatrixAround(int h, int w, int ray) {
+    PixelMatrix matrix_temp;
+    int h_matrix_temp=0;
+    for(int h_pos_matrix=h-ray; h_pos_matrix<h+ray; h_pos_matrix++)
+    {
+        for(int w_pos_matrix=w-ray; w_pos_matrix<w+ray; w_pos_matrix++)
+        {
+            matrix_temp.pushPixel(h_matrix_temp, this->getPixel(h_pos_matrix, w_pos_matrix));
+        }
+        h_matrix_temp++;
+    }
+    return matrix_temp;
+}
+
+void Image::processPixelsAround(Color (*processFunction)(PixelMatrix), int ray){
+    cout << "Processing pixels around... ";
     PixelMatrix matrix_copy;
     matrix_copy.image_vect = this->image_vect;
 
     for (int h_pos=0; h_pos<this->imageSize.height-1; h_pos++) {
         for (int w_pos=0; w_pos<this->imageSize.width-1; w_pos++) {
-
-            PixelMatrix matrix_temp;
-            int h_matrix_temp=0;
-            for(int h_pos_matrix=h_pos-ray; h_pos_matrix<h_pos+ray; h_pos_matrix++)
-            {
-                for(int w_pos_matrix=w_pos-ray; w_pos_matrix<w_pos+ray; w_pos_matrix++)
-                {
-                    matrix_temp.pushPixel(h_matrix_temp, this->getPixel(h_pos_matrix, w_pos_matrix));
-                }
-                h_matrix_temp++;
-            }
-            Color color_temp = (*processFunction)(matrix_temp);
+            Color color_temp = (*processFunction)(this->getPixelMatrixAround(h_pos, w_pos, ray));
             Pixel *pix_to_mod = matrix_copy.getPixel(h_pos, w_pos);
             pix_to_mod->setColor(color_temp);
-            
         }
     }
 

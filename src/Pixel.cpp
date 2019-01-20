@@ -39,6 +39,12 @@ Pixel::~Pixel() {
 
 }
 
+Pixel Pixel::randomPixel() {
+    Pixel p;
+    p = Pixel(rand()%256, rand()%256, rand()%256);
+    return p;
+}
+
 Color Pixel::getColor() {
     return this->pixelColor;
 }
