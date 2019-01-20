@@ -9,4 +9,5 @@
 .vscode
 
 # Data
-./*.ppm
+*.ppm
+*.jpg
