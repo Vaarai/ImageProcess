@@ -20,12 +20,14 @@ class Pixel {
     public:
         Pixel();
         Pixel(int averageValue);
+        Pixel(Color c);
         Pixel(int r, int g, int b);
         ~Pixel();
 
         static Pixel randomPixel();
 
         Color grayScale(); // return a new pixel in gray scale copy of this
+        Color negative();
         int maxColorValue();
         ColorE maxColorType();
         int averageColorValue();

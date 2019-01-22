@@ -35,6 +35,10 @@ Pixel::Pixel(int r, int g, int b) {
     this->pixelColor.blue = b;
 }
 
+Pixel::Pixel(Color c) {
+    this->pixelColor = c;
+}
+
 Pixel::~Pixel() {
 
 }
@@ -88,6 +92,14 @@ Color Pixel::grayScale() {
     int average = this->averageColorValue();
     Color c;
     c.red = average; c.green = average; c.blue = average;
+    return c;
+}
+
+Color Pixel::negative() {
+    Color c = this->getColor();
+    c.red = 255-c.red;
+    c.green = 255-c.green;
+    c.blue = 255-c.blue;
     return c;
 }
 
